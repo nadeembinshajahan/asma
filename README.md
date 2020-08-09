@@ -38,13 +38,13 @@ Make sure you have the prerequisites and then clone this repository to your loca
 git clone https://github.com/nadeembinshajahan/asma
 cd asma
 ```
-### Hardware
+## Drone Architecture
 The Aerial Agent consists of a 250mm custom built drone using pixhawk 2.4.8 flight controller flashed with the ArduPilot autopilot. The agent is equipped with a Ublox Neo 7M GPS for self navigation. 
 
 
 For autonomous operation, an onboard single board computer is interfaced via the UART port of the flight controller. A Raspberry Pi 3B+, running raspbian stretch, is used as the onboard computer. For remote surveillance and operation, the agent is equipped with a JioFi 4G dongle. A Raspberry PiCam captures the video feed for monitoring, which is then streamed to a forwarded port, to enable remote monitoring. The onboard SBC runs Mavros, which is a ROS wrapper for the MavLink protocol. This enables the agent to be controlled remotely using the SBC. 
 
-### Usage
+## Usage
 
 Make sure you have `Docker` installed on your device by following [these instructions](https://docs.docker.com/install/linux/docker-ce/debian).
 
