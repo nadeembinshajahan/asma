@@ -102,7 +102,7 @@ Building the frontend is resource intensive. If you are planning to host everyth
 ./download_openvino_model.sh
 
 # 1) Build Docker image (This step is optional, you can skip it if you want to pull the container from neuralet dockerhub)
-docker build -f x86-openvino.Dockerfile -t "neuralet/smart-social-distancing:latest-x86_64_openvino" .
+docker build -f x86-openvino.Dockerfile -t .
 
 # 2) Run Docker container:
 docker run -it -p HOST_PORT:8000 -v "$PWD/data":/repo/data neuralet/smart-social-distancing:latest-x86_64_openvino
