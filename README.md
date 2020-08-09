@@ -133,55 +133,6 @@ docker build -f x86-openvino.Dockerfile -t "neuralet/smart-social-distancing:lat
 docker run -it -p HOST_PORT:8000 -v "$PWD/data":/repo/data neuralet/smart-social-distancing:latest-x86_64_openvino
 ```
 
-### Configurations
-You can read and modify the configurations in `config-*.ini` files, accordingly:
-
-`config-jetson.ini`: for Jetson Nano / TX2 
-
-`config-coral.ini`: for Coral dev board / usb accelerator
-
-`config-x86.ini`: for plain x86 (cpu) platforms without any acceleration
-
-`config-x86-openvino.ini`: for x86 systems accelerated with Openvion
-
-Under the `[Detector]` section, you can modify the `Min score` parameter to define the person detection threshold. You can also change the distance threshold by altering the value of `DistThreshold`.
-
-### API usage
-After you run the processor's docker on your node, no matter if your frontend docker is running or not, you can use the Processor's API to control the Processor's Core, where all the process is getting done. 
-
-* The API supported paths are now as the following:
-
- 1- `PROCESSOR_IP:PROCESSOR_PORT/process-video-cfg`: Sends command `PROCESS_VIDEO_CFG` to core and returns the response. It starts to process the video adressed in the configuration file. If the response is `true`, it means the core is going to try to process the video (no guarantee if it will do it), and if the response is `false`, it means the process can not be started now (e.g. another process is already requested and running)
-
- 2- `PROCESSOR_IP:PROCESSOR_PORT/stop-process-video`: Sends command `STOP_PROCESS_VIDEO` to core and returns the response. It stops processing the video at hand, returns the response `true` if it stopped or `false`, meaning it can not (e.g. no video is already being processed to stop!)
-
- 3- `PROCESSOR_IP:PROCESSOR_PORT/get-config`: It returns the config which is used by both processor's API and Core (it is the same so returns just a single configuration set) in json format. This is the file you have used in your Processor's Dockerfile. 
-
- 4- `PROCESSOR_IP:PROCESSOR_PORT/set-config`: As the configuration file between Processor's API and Core is the same configuration, it sets the given set of json configurations in the config, for both API and Core and reloads the configuration. Core's engine is also restarted so all methods and members (specially those which were initiated with the old config) can use the updated config (this will stop the processing of the video - if any). 
-
- ***NOTE*** that the config file given in the Dockerfile will be updated, but this will be inside your docker and will be lost after stopping you running docker. 
-
-* Usage example: 
-
-While the Processor's docker is up and running:
-
-```bash
-curl -d '{"App": { "VideoPath" : "/repo/data/YOUR_VIDEO.mp4"} }' -H "Content-Type: application/json" -X POST http://PROCESSOR_IP:PROCESSOR_PORT/set-config 
-```
-(of course you have to put your video under `data/` before) and then enter `http://PROCESSOR_IP:PROCESSOR_PORT/process-video-cfg` in your browser. You can see in your terminal running the docker that your video is being loaded and processed. You also can refresh your dashboard to see the output.
 
 ***NOTE***: residual files under `data/web_gui/static/` may cause you to see previous streams and plots stored there! This needs to be issued separately, you can mannually clean that path for now.
 
-
-## Issues and Contributing
-
-The project is under substantial active development; you can find our roadmap at https://github.com/neuralet/neuralet/projects/1. Feel free to open an issue, send a Pull Request, or reach out if you have any feedback.
-* [Submit a feature request](https://github.com/neuralet/neuralet/issues/new?assignees=&labels=&template=feature_request.md&title=).
-* If you spot a problem or bug, please let us know by [opening a new issue](https://github.com/neuralet/neuralet/issues/new?assignees=&labels=&template=bug_report.md&title=).
-
-
-## Contact Us
-
-* Visit our website at https://neuralet.com
-* Email us at covid19project@neuralet.com
-* Check out our other models at https://github.com/neuralet.
