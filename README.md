@@ -20,7 +20,7 @@ You can read the [Smart Social Distancing tutorial](https://neuralet.com/docs/tu
 
 **Hardware**  
 A drone:
-*DJI Tello
+* Custom Made 250mm diagonal frame with PixHawk and Raspberry Pi.
 
 A host edge device:
 * NVIDIA Jetson Nano
