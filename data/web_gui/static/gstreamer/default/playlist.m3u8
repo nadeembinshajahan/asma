@@ -1,0 +1,16 @@
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-ALLOW-CACHE:NO
+#EXT-X-MEDIA-SEQUENCE:20
+#EXT-X-TARGETDURATION:5
+
+#EXTINF:5,
+/static/gstreamer/default/video_00019.ts
+#EXTINF:5,
+/static/gstreamer/default/video_00020.ts
+#EXTINF:5,
+/static/gstreamer/default/video_00021.ts
+#EXTINF:5,
+/static/gstreamer/default/video_00022.ts
+#EXTINF:5,
+/static/gstreamer/default/video_00023.ts
