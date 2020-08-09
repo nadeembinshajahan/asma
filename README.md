@@ -1,10 +1,10 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-# Smart Social Distancing
+# ASMA - Autonomous Social-Distancing Monitoring Agent
 
 ## Introduction
 
-Smart Distancing is an open-source application to quantify social distancing measures using edge computer vision systems. Since all computation runs on the device, it requires minimal setup and minimizes privacy and security concerns. It can be used in retail, workplaces, schools, construction sites, healthcare facilities, factories, etc.
+ASMA is an application to quantify social distancing measures using edge computer vision systems. Since all computation runs on the device, it requires minimal setup and minimizes privacy and security concerns. It can be used in retail, workplaces, schools, construction sites, healthcare facilities, factories, etc.
 
 <div align="center">
   <img  width="100%" src="demo.gif">
@@ -75,13 +75,13 @@ Otherwise, skip this step, as we have already built the frontend for `master` br
 * To build the frontend run:
 
 ```bash
-docker build -f frontend.Dockerfile -t "neuralet/smart-social-distancing:latest-frontend" .
+docker build -f frontend.Dockerfile .
 ```
 
 * To run the frontend, run:
 
 ```bash
-docker build -f web-gui.Dockerfile -t "neuralet/smart-social-distancing:latest-web-gui" .
+docker build -f web-gui.Dockerfile .
 docker run -it -p HOST_PORT:8000 --rm neuralet/smart-social-distancing:latest-web-gui 
 ```
 
@@ -94,31 +94,6 @@ docker run -it -p HOST_PORT:8000 --rm neuralet/smart-social-distancing:latest-we
 Building the frontend is resource intensive. If you are planning to host everything on an edge device, we suggest building the docker image on your PC/laptop first and then copy it to the edge device. However, you can always start the frontend container on a PC/laptop and the processor container on the edge device.
 
 ---
-
-* To run the frontend on an edge device (Only possible on jetson for now):
-
-```bash
-# Run this commands on your PC/laptop:
-docker build -f frontend.Dockerfile -t "neuralet/smart-social-distancing:latest-frontend" .
-docker save -o "frontend_base_image.tar" neuralet/smart-social-distancing:latest-frontend
-```
-
-* Then, move the file `frontend_base_image.tar` that was just built on your PC/laptop to your jetson platform and load it:
-```bash
-# Copy "frontend_image.tar" to your edge device and run this command on your device:
-docker load -i "frontend_base_image.tar"
-rm frontend_base_image.tar
-```
-
-* Then build the web-gui image for jetson:
-```bash
-docker build -f jetson-web-gui.Dockerfile -t "neuralet/smart-social-distancing:latest-web-gui-jetson" .
-
-# And run it:
-docker run -it -p HOST_PORT:8000 --rm neuralet/smart-social-distancing:latest-web-gui-jetson
-```
-
-**The Next sections explain how to run the processor on different devices**
 
 
 **Run using OpenVino**
