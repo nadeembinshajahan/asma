@@ -30,11 +30,6 @@ A host edge device:
 **Software**
 * You should have [Docker](https://docs.docker.com/get-docker/) on your device.
 
-### Install
-
-Library for DJI Tello
-```bash
-pip install -r requirements.txt
 ```
 
 Make sure you have the prerequisites and then clone this repository to your local system by running this command:
