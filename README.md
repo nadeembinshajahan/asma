@@ -75,14 +75,14 @@ Otherwise, skip this step, as we have already built the frontend for `master` br
 * To build the frontend run:
 
 ```bash
-docker build -f frontend.Dockerfile .
+docker build -f frontend.Dockerfile -t asma:frontend .
 ```
 
 * To run the frontend, run:
 
 ```bash
-docker build -f web-gui.Dockerfile .
-docker run -it -p HOST_PORT:8000 --rm neuralet/smart-social-distancing:latest-web-gui 
+docker build -f web-gui.Dockerfile -t asma:web-gui .
+docker run -it -p HOST_PORT:8000 --rm asma:web-gui 
 ```
 
 > Important: There is a `config-frontend.ini` file which tells the frontend where to find the processor container. 
@@ -102,10 +102,10 @@ Building the frontend is resource intensive. If you are planning to host everyth
 ./download_openvino_model.sh
 
 # 1) Build Docker image (This step is optional, you can skip it if you want to pull the container from neuralet dockerhub)
-docker build -f x86-openvino.Dockerfile -t .
+docker build -f x86-openvino.Dockerfile -t asma:backend .
 
 # 2) Run Docker container:
-docker run -it -p HOST_PORT:8000 -v "$PWD/data":/repo/data neuralet/smart-social-distancing:latest-x86_64_openvino
+docker run -it -p HOST_PORT:8000 -v "$PWD/data":/repo/data asma:backend
 ```
 
 
