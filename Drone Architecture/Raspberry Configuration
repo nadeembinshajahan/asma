@@ -1,0 +1,9 @@
+The raspberry pi runs Raspbian Stretch with ROS Kinetic. Installation procedure is available at-
+https://www.raspberrypi.org/documentation/installation/installing-images/
+http://wiki.ros.org/ROSberryPi/Installing%20ROS%20Kinetic%20on%20the%20Raspberry%20Pi
+
+The image for Raspbian Stretch is available at-
+https://downloads.raspberrypi.org/raspbian/images/raspbian-2019-04-09/
+
+The agent uses Mavros for remote operation. It can be installed by following- 
+https://github.com/mavlink/mavros

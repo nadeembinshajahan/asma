@@ -1,0 +1,17 @@
+The frame was designed keeping in mind, the components to be housed, the size and weight of theUAV. It belongs to the micro quad category and measures 250mm*250mm*150mm. The materialused to fabricate the frame was PLA. The total weight of the frame stood at 178g, whichcontributed to approximately 15% of the overall weight of the system. This is in accordance with the design rules.
+
+The overall weight is calculated in order to make correct assumptions regarding the total thrust required and the selection of motor propeller combinations.
+
+Component Weight (in grams)
+Frame 178
+Companion Computer 48
+Li-Po Battery 491
+Flight Controller 42
+Electronic Speed Controller * 4 52
+Intel T265 Tracking Camera 73
+Motor + Propellers * 4 320
+Total Weight = 1204 grams.
+
+Approximate thrust required = 2 * the total weight = 2500g thrust.
+
+For our purpose, we have chosen the DYS Samguk Series WU 2206 Brushless Motor rated at 2400KV, that provides 680g thrust per motor when supplied with 11.1V with a 5045 tri-blade propeller. Therefore, we obtain a maximum thrust of 2720g, which is a good value leaving adequate margins for errors.

@@ -1,0 +1,28 @@
+To obtain video stream-
+1.Enable PiCam from
+	sudo raspi-config
+'Interfacing Options' -> 'P1 Camera' -> 'Yes' -> 'Finish'
+
+2. Copy the given script to the root location of your Pi
+
+3. To auto run the script during bootup, 
+	sudo nano /etc/rc.local
+edit rc.local by adding
+	sudo python3 /home/pi/stream.py &
+save and exit
+
+The script gets executed after bootup and the stream is available at port 8000.
+To enable remote access, we can forward the port using any tunneling services. Follow the given steps to install and use ngrok(personal choice)
+
+4. Go to ngrok.com to create an account and obtain the authtoken.
+
+5. Install ngrok using
+	sudo snap install ngrok
+6. Add authtoken using
+	ngrok authtoken <your-toke>
+7. To start tunneling,
+	ngrok http 8000
+
+The ngrok console opens up, displaying the domain with access to the stream.	
+
+
